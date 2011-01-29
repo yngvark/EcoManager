@@ -7,7 +7,18 @@ require 'csv_importer'
 
 class TC_ExpenseReportLineChartTest < Test::Unit::TestCase
 
-  def test_js_expected()
+  def todo_test_can_create_report()
+    create_report("tc_expense_report_line_chart.csv")
+    assert(true, "Was not able to create ExpenseReport")
+  end
+
+  def todo_test_can_create_chart()
+    report = create_report("tc_expense_report_line_chart.csv")
+    chart = ExpenseReportLineChart.new(report)
+    assert(true, "Was not able to create ExpenseReportLineChart")
+  end
+
+  def todo_test_js_expected()
     report = create_report("tc_expense_report_line_chart.csv")
     chart = ExpenseReportLineChart.new(report)
 

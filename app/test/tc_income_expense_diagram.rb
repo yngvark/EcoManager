@@ -2,14 +2,13 @@ require 'test/unit'
 require 'account'
 require 'date'
 require 'csv_importer'
-require 'report_generator'
-require 'income_expense_report_line_chart'
+require 'income_expense_diagram'
 
-class TC_IncomeExpenseReportLineChartTest < Test::Unit::TestCase
+class TC_IncomeExpenseDiagramTest < Test::Unit::TestCase
 
   def test_js_expected()
     report = create_report("tc_income_expense_report_line_chart.csv")
-    chart = IncomeExpenseReportLineChart.new(report)
+    chart = IncomeExpenseDiagram.new(report)
 
     js_expected = "[[596.98, 1813.7, 1228.32, 746.16, 214.0, 1085.69, 794.0, 9633.31, 0.0, 0.0, 0.0, 0.0], [22698.0, 11000.0, 347.0, 1210.0, 0.0, 0.0, 7257.0, 0.0, 0.0, 0.0, 0.0, 0.0]]";
     js = chart.to_s
@@ -27,7 +26,7 @@ class TC_IncomeExpenseReportLineChartTest < Test::Unit::TestCase
     @expenses_account = Account.new("Expenses")
     transactions = import_csv(csv_filename)
 
-    generator = ReportGenerator.new(
+    generator = IncomeExpenseReportGenerator.new(
       transactions,
       time_interval,
       start_date,

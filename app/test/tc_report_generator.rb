@@ -2,7 +2,8 @@ require 'test/unit'
 require 'date'
 require 'account'
 require 'csv_importer'
-require 'report_generator'
+require 'income_expense_report_generator'
+
 
 class TC_ReportGeneratorTest < Test::Unit::TestCase
 
@@ -14,7 +15,7 @@ class TC_ReportGeneratorTest < Test::Unit::TestCase
     @expense_account = Account.new("Expenses")
     @transactions = import_csv(@income_account, @expense_account)
 
-    @generator = ReportGenerator.new(
+    @generator = IncomeExpenseReportGenerator.new(
       @transactions,
       @time_unit,
       @start_date,
@@ -85,7 +86,7 @@ class TC_ReportGeneratorTest < Test::Unit::TestCase
 
   def test_invalid_transaction_raises_exception()
     assert_raise(ArgumentError) do
-      ReportGenerator.new(
+      IncomeExpenseReportGenerator.new(
         "A string instead of transactions",
         @time_unit,
         @start_date,

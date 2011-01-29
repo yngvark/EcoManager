@@ -1,8 +1,8 @@
 require 'graph'
 require 'line_chart'
-require 'report_chart'
+require 'diagram'
 
-class IncomeExpenseReportLineChart < ReportChart
+class IncomeExpenseDiagram < Diagram
 
   def to_s()
     chart = LineChart.new()

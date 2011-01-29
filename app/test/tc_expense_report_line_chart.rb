@@ -14,13 +14,13 @@ class TC_ExpenseReportLineChartTest < Test::Unit::TestCase
 
   def todo_test_can_create_chart()
     report = create_report("tc_expense_report_line_chart.csv")
-    chart = ExpenseReportLineChart.new(report)
+    chart = ExpenseDiagram.new(report)
     assert(true, "Was not able to create ExpenseReportLineChart")
   end
 
   def todo_test_js_expected()
     report = create_report("tc_expense_report_line_chart.csv")
-    chart = ExpenseReportLineChart.new(report)
+    chart = ExpenseDiagram.new(report)
 
     # Apotek: [0.0, 162.0, 120.0, 0.0, 0.0, 0.0, 0.0, 500.0, 0.0, 0.0, 0.0, 0.0]
     # Bunnpris: [326.98, 620.6, 54.6, 171.5, 0.0, 1007.69, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]

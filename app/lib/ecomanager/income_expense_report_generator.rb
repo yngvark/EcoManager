@@ -1,6 +1,6 @@
 require 'income_expense_report'
 
-class ReportGenerator
+class IncomeExpenseReportGenerator
 
   attr_accessor :time_unit
   

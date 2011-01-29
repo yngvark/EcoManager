@@ -16,7 +16,7 @@ def create_report(csv_filename)
 	@expenses_account = Account.new("Expenses")
   transactions = import_csv(csv_filename)
 
-	generator = ReportGenerator.new(
+	generator = IncomeExpenseReportGenerator.new(
 		transactions,
 		time_interval,
 		start_date,
@@ -65,7 +65,7 @@ if __FILE__ == $0
   # Get javascript for report chart...
 	report = create_report("income_vs_expenses2.csv")
   debug(report)
-	chart = IncomeExpenseReportLineChart.new(report)
+	chart = IncomeExpenseDiagram.new(report)
 	chart_js = chart.to_s
 
   # Write report chart to HTML file...

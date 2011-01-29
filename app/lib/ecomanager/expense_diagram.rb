@@ -1,7 +1,7 @@
 require 'line_chart'
 require 'expense_report'
 
-class ExpenseReportLineChart
+class ExpenseDiagram
 
   def initialize(expenses_report)
     if !expenses_report.is_a?(ExpenseReport)

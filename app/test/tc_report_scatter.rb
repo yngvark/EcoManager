@@ -109,7 +109,7 @@ class TC_ReportScatterTest < Test::Unit::TestCase
     @expenses_account = Account.new("Expenses")
     transactions = import_csv(@income_account, @expenses_account)
 
-    generator = ReportGenerator.new(
+    generator = IncomeExpenseReportGenerator.new(
       transactions,
       time_interval,
       start_date,

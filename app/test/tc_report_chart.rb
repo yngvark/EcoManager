@@ -10,7 +10,7 @@ class TC_ReportChartTest < Test::Unit::TestCase
 
   def test_graphs_must_always_be_in_same_order()
     report = create_report("tc_report_chart.csv")
-    chart = IncomeExpenseReportLineChart.new(report)
+    chart = IncomeExpenseDiagram.new(report)
     graphs = chart.graphs()
     constant_graphs = []
     
@@ -39,7 +39,7 @@ class TC_ReportChartTest < Test::Unit::TestCase
     @expenses_account = Account.new("Expenses")
     transactions = import_csv(csv_filename)
 
-    generator = ReportGenerator.new(
+    generator = IncomeExpenseReportGenerator.new(
       transactions,
       time_interval,
       start_date,

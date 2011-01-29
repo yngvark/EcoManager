@@ -5,7 +5,7 @@ require 'line_chart'
 # inherit from Chart, like LineChart does (though Scatter also inherits from
 # Chart, even if it's not called ScatterChart).
 
-class ReportChart
+class Diagram
 
   attr_reader :chart_labels
 

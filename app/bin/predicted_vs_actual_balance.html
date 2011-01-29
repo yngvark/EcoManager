@@ -1,0 +1,62 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <title>EcoManager</title>
+	
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+
+    <script src="../lib/javascript/rgraph/RGraph.common.core.js" ></script>
+    <script src="../lib/javascript/rgraph/RGraph.common.context.js" ></script>
+    <script src="../lib/javascript/rgraph/RGraph.common.annotate.js" ></script>
+    <script src="../lib/javascript/rgraph/RGraph.common.tooltips.js" ></script>
+    <script src="../lib/javascript/rgraph/RGraph.common.zoom.js" ></script>
+    <script src="../lib/javascript/rgraph/RGraph.common.resizing.js" ></script>
+	
+	<script src="../lib/javascript/rgraph/RGraph.scatter.js" ></script>
+
+    <script>
+        window.onload = function ()
+        {
+			var scatter = new RGraph.Scatter('scatter',
+				/*
+				[ 
+					// Unconmment this "null line" in order to allow other graphs to be non-straight. 
+					[0,0], [365, 0] 
+				],
+				*/
+[[[10, -2500], [10, 2500]], [[1, 1500], [1, 900], [4, 900], [4, -500], [7, -500], [7, -1800], [10, -1800]], [[1, 1400], [1, 800], [4, 400], [4, -1000], [7, -1400], [10, -1600], [13, -2200], [13, -1800], [16, -2000], [16, 1600], [25, 1200]], [[10, -1800], [13, -2400], [13, -2000], [16, -2200], [16, 1400], [25, 1000]]]
+				  );
+			var chart_labels = 
+				[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+				21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31];
+            scatter.Set('chart.title', 'Forventet vs faktisk saldo');
+            scatter.Set('chart.labels', chart_labels);
+            scatter.Set('chart.xmax', 31);
+			scatter.Set('chart.ymin', 0);
+            scatter.Set('chart.ymax', 4000);
+			scatter.Set('chart.xaxis', true);
+			scatter.Set('chart.xaxispos', 'center');
+            scatter.Set('chart.line', true);
+            scatter.Set('chart.line.stepped', [true, false]);
+            scatter.Set('chart.line.linewidth', [1,4,3,3]);
+            scatter.Set('chart.line.colors', ['green', 'blue', 'red', 'orange']);
+            scatter.Set('chart.ticksize', 8);
+            scatter.Set('chart.key', ['Today', 'Faktisk saldo', 'Forventet saldo', 'Justert forventet saldo']);
+			scatter.Set('chart.key.position', 'gutter');
+			scatter.Set('chart.background.grid.autofit', true);
+			scatter.Set('chart.background.grid.autofit.numvlines', 31);
+			scatter.context.translate(20,0); // Move whole diagram to the right in order to show partly hidden y-axis bug.
+			
+            scatter.Draw();
+            
+        }
+    </script>
+
+</head>
+<body>
+        <div style='padding-left: 30px'>
+			<canvas id="scatter" width="950" height="450">[No canvas support]</canvas>
+        </div>
+
+</body>
+</html>

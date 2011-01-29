@@ -1,0 +1,2 @@
+- Refactor report_scatter. Er blanding med scatter her.
+- Mangler alt som heter errorhåndtering

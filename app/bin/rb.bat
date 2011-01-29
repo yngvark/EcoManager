@@ -1,0 +1,1 @@
+ruby -I../lib/ecomanager %1 %2 %3

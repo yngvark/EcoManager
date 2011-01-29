@@ -1,0 +1,46 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <title>EcoManager</title>
+	
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+
+	<script src="../lib/javascript/rgraph/RGraph.common.core.js" ></script>
+    <script src="../lib/javascript/rgraph/RGraph.common.context.js" ></script>
+    <script src="../lib/javascript/rgraph/RGraph.common.annotate.js" ></script>
+    <script src="../lib/javascript/rgraph/RGraph.common.tooltips.js" ></script>
+    <script src="../lib/javascript/rgraph/RGraph.common.zoom.js" ></script>
+    <script src="../lib/javascript/rgraph/RGraph.common.resizing.js" ></script>
+	
+	<script src="../lib/javascript/rgraph/RGraph.scatter.js" ></script>
+
+    <script>
+        window.onload = function ()
+        {
+			var data = [[[6, 0], [7, 0.27257E5], [8, 0.960016E5]], [[6, 0.2431E3], [7, 0.1126137E5], [8, 0.10088242E6]]]
+			var scatter = new RGraph.Scatter('scatter', data);
+			var chart_labels = [6, 7, 8];
+
+			scatter.Set('chart.title', 'Income VS Expenses');
+            scatter.Set('chart.key', ['Income', 'Expenses']);
+            scatter.Set('chart.labels', chart_labels);
+            scatter.Set('chart.xmax', 9);
+            scatter.Set('chart.line', true);
+            scatter.Set('chart.line.stepped', [false, false]);
+			
+			// Colors and style...
+            scatter.Set('chart.line.colors', ['green', 'blue']);
+			scatter.context.translate(30,0); // Move whole diagram to the right in order to show partly hidden y-axis (bug).
+			
+            scatter.Draw();
+        }
+    </script>
+
+</head>
+<body>
+        <div style='padding-left: 30px'>
+			<canvas id="scatter" width="950" height="450">[No canvas support]</canvas>
+        </div>
+
+</body>
+</html>

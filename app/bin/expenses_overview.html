@@ -1,0 +1,65 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <title>EcoManager</title>
+	
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+
+	<script src="../lib/javascript/rgraph/RGraph.common.core.js" ></script>
+    <script src="../lib/javascript/rgraph/RGraph.common.context.js" ></script>
+    <script src="../lib/javascript/rgraph/RGraph.common.annotate.js" ></script>
+    <script src="../lib/javascript/rgraph/RGraph.common.tooltips.js" ></script>
+    <script src="../lib/javascript/rgraph/RGraph.common.zoom.js" ></script>
+    <script src="../lib/javascript/rgraph/RGraph.common.resizing.js" ></script>
+	
+	<script src="../lib/javascript/rgraph/RGraph.line.js" ></script>
+
+    <script>
+        window.onload = function ()
+        {
+		var data =
+			[
+				[2000, 1400, 3500, 2500],
+				[250, 800, 0, 450],
+				[500, 300, 700, 1500]
+			];
+        var line = new RGraph.Line("myLine", data);
+		//line.Set('chart.labels', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
+		line.Set('chart.background.barcolor1', 'white');
+		line.Set('chart.background.barcolor2', 'white');
+		line.Set('chart.background.grid', true);
+		line.Set('chart.linewidth', 5);
+		line.Set('chart.tickmarks', ['circle', 'circle', 'circle', 'circle', 'circle', 'circle']);
+		line.Set('chart.gutter', 35);
+		line.Set('chart.hmargin', 5);
+		line.Set('chart.shadow', true);
+		line.Set('chart.xticks', 8);
+		line.Set('chart.colors', ['green', 'red', 'blue']);
+		line.Set('chart.key', ['Food', 'Repairs', 'Transport']);
+		line.Set('chart.key.shadow', true);
+		line.Set('chart.key.shadow.offsetx', 0);
+		line.Set('chart.key.shadow.offsety', 0);
+		line.Set('chart.key.shadow.blur', 15);
+		line.Set('chart.key.shadow.color', '#ddd');
+		line.Set('chart.key.rounded', true);
+		line.Set('chart.key.position', 'gutter');
+		line.Set('chart.xaxispos', 'center');
+		line.Set('chart.background.grid.autofit', true);
+		line.Set('chart.background.grid.autofit.numhlines', 16);
+		line.Set('chart.title.vpos', 0);
+		
+		line.Set('chart.title', "Income VS Expenses");
+		line.context.translate(30,13); // Move whole diagram to the right in order to show partly hidden y-axis (bug).
+        line.Draw();
+			
+        }
+    </script>
+
+</head>
+<body>
+        <div style='padding-left: 130px; padding-top: 100px'>
+			<canvas id="myLine" width="950" height="450">[No canvas support]</canvas>
+        </div>
+
+</body>
+</html>

@@ -1,0 +1,118 @@
+Videre utvikling
+----------------
+Inntil jeg finner ut av Rails, fortsett å utvikle kjernekoden slik at jeg kan finne ut hva jeg bruker penger på hver måned, og hvor mye (se statistikk-usecase i Excel-fil), pga det er dette jeg trenger mest ATM (for å kunne budsjettere tiden i Oslo, hvor dyr leilighet jeg kan ha.)
+
+Mao: PRIORITET: CSV-BASERT UTGIFTSSTATISTIKK, med fordeling på kategorier og tidsrom (mnd i første omgang). Output kan være enten CSV-data for excel, eller en HTML5-RGraph
+
+Gamle notater
+-------------
+
+1. As a user, I can see a diagram that shows the predicted/budgeted balance for a given date range (usually month, quarter or year, but date-specific ranges should be possible, with any chosen interval).
+	1.1. Calculate a continous balance based on several transactions. The balance updates after each transaction.
+		OK 1.1.1 We'll need an account, which can contain transactions.
+		1.1.1.1 The account must be able to give a balance at a given point of time.
+		OK 1.1.1.2 ... Or perhaps just a list of the changing balance values?
+		OK 1.1.1.3. In any case, a balance is connected to one transaction. Iow, in two columns showing transaction sum and balance, each sum updates the balance.
+		OK 1.1.1.4 And how do we get all the data needed by the diagram/scatter? Use TDD.
+	1.2. I want to be able to adjust whether I want to see the changes as gradually changing (F=yx+b) or stepwise changing (a "stair"-graph)
+	... (fill out)
+OK 2. As a user, I can see a diagram that shows predicted vs actual balance, today's date, and the adjusted predicted balance (which is recalculated prediction based on actual spendings until the current time.)
+	- Dependency: 1.
+3. As a user, I want to import transactions from my web bank (so that I can do other stuff with these transactions, for instance view the accout balance)
+	3.1 Copy+paste directly from web bank account transaction page
+	3.2 Import from CSV
+	
+	
+NY:
+OK * Lage transaksjoner med debet og kredit
+OK * Få gammel funksjonalitet inn i nytt transaksjonssystem
+OK * Test that credit=debit
+* What about splitted transactions?
+* Importere transaksjoner fra CSV
+
+
+
+
+	def set_post_balance(new_post)
+		if @posts.length == 1
+			# The new post is the only post, thus its balance must be 0.
+			new_post.balance = 0
+			return
+		end
+		
+		(0..@posts.length).each do |i|
+			if @posts[i].equals?(new_post)
+				last_post = @posts[i - 1]
+				if new_post.transaction.debit_account.equals?(self)
+					new_post.balance = last_post.balance + new_post.transaction.amount
+				elsif new_post.transaction.credit_account.equals?(self)
+					new_post.balance = last_post.balance - new_post.transaction.amount
+				end
+				
+				break
+			end
+			
+		end
+		
+	end
+
+	
+------------------------------------------------------------------------------------------
+Template
+------------------------------------------------------------------------------------------
+As a <type of user>, I want <capability> so that <benefit>.
+Ex: As a book buyer, I want to search for a book by ISBN so that I can find the reight book quickly.
+
+------------------------------------------------------------------------------------------
+Stories
+------------------------------------------------------------------------------------------
+- As an administrator I want to import a list of athletes so that they are registered in the system.
+
+- As a registrant I want to register athletes manually so that they are registered in the system.
+
+- As a registrant I want to be denied registering an already registered athlete, so that duplicates are avoided in the system.
+PROBLEM: manual registrating, id
+
+- As a registrant I want to mark participants as present so that they are in the list of participants.
+
++ add req: manage information (in the field)
+
+- As a registrant I want to assign a number to each participant so that they can be uniquely identified.
+
+- As a speaker I want to see a list of present participants so that I can announce them.
+
+- As a speaker I want to see the result of the race so that I can announce it.
+
+- As an administrator I want to store the result of the race so that I can access it later.
++ staging, confirming
+
+- As a spectator I want to se the result in real time so that I can follow the event live.
+
+- As a registrant I want to distribute the participants so that they are evenly distributed into groups.
++ low priority
+
+- As an administrator I want to check that the club has paid their fee, and that the participant is registered to the club, so that the participant is eligible for the regional championship.
++ split fee and participant
+
+- As a time keeper I want to start a timer for the given race so that timing is possible.
+
+- As a time keeper I want to stop a started timer for the given race so that timing stops.
+
+- As a time keeper I want to reset a timer for the given race so that timing can be restarted from the beginnig.
+
+- As a time keeper I want to see the running timer for the given race so that I can follow the time and know that the timing works.
++ add for speaker
+
+- As a spectator I want to see the running timer for the given race, so that I can follow the time. 
+
+- As a time keeper I want to be able to save the time of a runner as a certain point is passed.
+
+- As a time keeper I want to be able to start the timer even though another timer is currently running so that multiple races can run at the same time.
++ not a req
++ add req for batches of ppl
++ add reqs for disqualafied, did not run, did not finish, etc
+
++ Print reports
+	+ club divided info, envelopes with start numbers, etc
+	
++ req for young runners, do not sort by time, check rules

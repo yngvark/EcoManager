@@ -1,4 +1,4 @@
-require 'income_expense_report'
+require File.expand_path('..', __FILE__) + '/income_expense_report'
 
 class IncomeExpenseReportGenerator
 

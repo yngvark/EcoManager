@@ -1,9 +1,4 @@
 require 'graph'
-require 'line_chart'
-
-# TODO: Find better name than "ReportChart", because it sounds like it should
-# inherit from Chart, like LineChart does (though Scatter also inherits from
-# Chart, even if it's not called ScatterChart).
 
 class Diagram
 

@@ -1,5 +1,5 @@
 require 'graph'
-require 'line_chart'
+require 'chart/line_chart'
 require 'diagram'
 
 class IncomeExpenseDiagram < Diagram

@@ -1,2 +1,1 @@
-cls 
-ruby -I../lib/ecomanager tc_all.rb 
+ruby -I../lib/ecomanager tc_all.rb

@@ -2,7 +2,7 @@ require 'test/unit'
 require 'account'
 require 'date'
 require 'csv_importer'
-require 'income_expense_diagram'
+require 'reports/income_expenses/income_expense_diagram'
 
 class TC_IncomeExpenseDiagramTest < Test::Unit::TestCase
 

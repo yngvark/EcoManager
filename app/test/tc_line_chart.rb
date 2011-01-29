@@ -1,6 +1,6 @@
 require 'test/unit'
 require 'graph.rb'
-require 'line_chart.rb'
+require 'chart/line_chart.rb'
 
 class TC_LineTest < Test::Unit::TestCase
 	# Can add graphs to a scatter diagram. For scatter diagram explanation, see RGraph scatter diagram.

@@ -2,8 +2,7 @@ require 'test/unit'
 require 'date'
 require 'account'
 require 'csv_importer'
-require 'income_expense_report_generator'
-
+require 'reports/income_expenses/income_expense_report_generator'
 
 class TC_ReportGeneratorTest < Test::Unit::TestCase
 
